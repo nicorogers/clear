@@ -11,7 +11,7 @@
       margin: 0;
       background: #ffffff;
       color: #1f1f1f;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
       font-size: 18px;
       line-height: 1.85;
       text-align: center;
@@ -46,6 +46,11 @@
       margin: 0 0 18px;
     }
 
+    /* Mission highlight */
+    .mission-line {
+      color: #6f8fae; /* subtle, calm blue */
+    }
+
     footer {
       margin-top: 64px;
       padding-top: 32px;
@@ -61,9 +66,8 @@
       padding-bottom: 2px;
     }
 
-    /* Horizontal “LinkedIn-like” carousel */
-    .example-carousel {
-      position: relative;
+    /* Horizontal example cards */
+    .example-wrapper {
       margin-top: 24px;
     }
 
@@ -71,66 +75,43 @@
       display: flex;
       gap: 18px;
       overflow-x: auto;
-      padding: 16px 6px 22px;
+      padding: 16px 6px 28px;
       scroll-snap-type: x mandatory;
-      scroll-padding: 6px;
       -webkit-overflow-scrolling: touch;
-      overscroll-behavior-x: contain;
-      scroll-behavior: smooth;
-      cursor: grab;
-      user-select: none;
-      text-align: left; /* cards remain readable */
+      scrollbar-width: none;
     }
 
-    .example-scroll:active { cursor: grabbing; }
-
-    /* hide scrollbars (LinkedIn vibe) */
-    .example-scroll::-webkit-scrollbar { height: 0px; }
-    .example-scroll { scrollbar-width: none; }
+    .example-scroll::-webkit-scrollbar {
+      display: none;
+    }
 
     .example-card {
-      flex: 0 0 300px;              /* shows a “peek” of next card on many screens */
-      padding: 22px 22px;
+      flex: 0 0 220px; /* narrower cards */
+      padding: 22px 20px;
       border: 1px solid #efefef;
       border-radius: 14px;
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.65;
+      text-align: left;
       scroll-snap-align: start;
       background: #fff;
     }
 
-    /* optional: simple text arrows (no icons, no colors) */
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 10px;
-      font-size: 14px;
-      color: #666;
-    }
-    .carousel-btn {
-      border: 1px solid #efefef;
-      border-radius: 999px;
-      padding: 8px 14px;
-      background: #fff;
-      color: inherit;
-      font: inherit;
-    }
-    .carousel-btn:active { transform: translateY(1px); }
-
-    /* Steps: Step label on its own line */
+    /* Steps */
     .step-label {
       font-size: 18px;
-      line-height: 1.6;
-      margin: 22px 0 10px;
+      margin: 28px 0 10px;
     }
-    .step-label:first-of-type { margin-top: 0; }
+
+    .step-label:first-of-type {
+      margin-top: 0;
+    }
 
     @media (max-width: 420px) {
       body { font-size: 17px; }
       h1 { font-size: 44px; }
       h2 { font-size: 22px; }
-      .example-card { flex: 0 0 270px; }
+      .example-card { flex: 0 0 200px; }
     }
   </style>
 </head>
@@ -142,7 +123,7 @@
     <section>
       <h2>Our Mission</h2>
 
-      <p>
+      <p class="mission-line">
         Helping you feel at ease about your finances, so you can focus on living the life you want.
       </p>
 
@@ -161,9 +142,8 @@
     <section>
       <h2>Who is it for</h2>
 
-      <p>Clear is for people who:</p>
-
       <p>
+        Clear is for people who:<br>
         are tired of spreadsheets, categories, and manual tracking<br>
         don’t want budgeting or discipline systems<br>
         want clarity without losing time getting it<br>
@@ -182,19 +162,14 @@
 
       <p>For example:</p>
 
-      <div class="example-carousel">
-        <div class="example-scroll" id="exampleScroll">
+      <div class="example-wrapper">
+        <div class="example-scroll">
           <div class="example-card">How much of my money actually goes to food?</div>
           <div class="example-card">Where can I buy the same products, but cheaper?</div>
           <div class="example-card">What is the real cost of owning my house?</div>
           <div class="example-card">How much do small, everyday purchases really add up to over a month?</div>
           <div class="example-card">How much can I save per month if I stop going to restaurants?</div>
           <div class="example-card">How many recurring costs per month do I have?</div>
-        </div>
-
-        <div class="carousel-controls" aria-hidden="true">
-          <button class="carousel-btn" type="button" id="prevBtn">‹</button>
-          <button class="carousel-btn" type="button" id="nextBtn">›</button>
         </div>
       </div>
 
@@ -235,44 +210,5 @@
       © Clear — a project by WISLIGO
     </footer>
   </main>
-
-  <script>
-    // LinkedIn-like: drag-to-scroll + snap + optional arrow buttons (works on mobile + desktop)
-    (function () {
-      const scroller = document.getElementById('exampleScroll');
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-
-      // Arrow buttons scroll by about one card
-      function cardStep() {
-        const firstCard = scroller.querySelector('.example-card');
-        if (!firstCard) return 280;
-        const styles = window.getComputedStyle(firstCard);
-        const w = firstCard.getBoundingClientRect().width;
-        return w + 18; // 18 = gap
-      }
-      prevBtn.addEventListener('click', () => scroller.scrollBy({ left: -cardStep(), behavior: 'smooth' }));
-      nextBtn.addEventListener('click', () => scroller.scrollBy({ left:  cardStep(), behavior: 'smooth' }));
-
-      // Drag to scroll (desktop)
-      let isDown = false;
-      let startX = 0;
-      let scrollLeft = 0;
-
-      scroller.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - scroller.offsetLeft;
-        scrollLeft = scroller.scrollLeft;
-      });
-      window.addEventListener('mouseup', () => { isDown = false; });
-      window.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - scroller.offsetLeft;
-        const walk = (x - startX) * 1.2; // gentle speed
-        scroller.scrollLeft = scrollLeft - walk;
-      });
-    })();
-  </script>
 </body>
 </html>
