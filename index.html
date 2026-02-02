@@ -13,55 +13,60 @@
       color: #1f1f1f;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial;
       font-size: 18px;
-      line-height: 1.8;
+      line-height: 1.85;
       text-align: center;
       -webkit-font-smoothing: antialiased;
+      letter-spacing: 0.01em;
     }
 
     .wrap {
       max-width: 720px;
       margin: 0 auto;
-      padding: 64px 22px 80px;
+      padding: 72px 22px 88px;
     }
 
     h1 {
-      font-size: 52px;
-      margin-bottom: 40px;
+      font-size: 56px;
+      margin-bottom: 56px;
       letter-spacing: -0.02em;
     }
 
     h2 {
-      font-size: 14px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
+      font-size: 22px;              /* BIGGER section titles */
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+      font-weight: 500;
     }
 
     section {
-      padding: 40px 0;
+      padding: 48px 0;
       border-top: 1px solid #efefef;
+    }
+
+    p {
+      margin-bottom: 18px;
     }
 
     ul {
       list-style: none;
       padding: 0;
-      margin: 20px 0;
+      margin: 24px 0;
     }
 
     li {
-      margin: 10px 0;
+      margin: 12px 0;
     }
 
     .steps p {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 56px;
       font-size: 14px;
       color: #666;
       border-top: 1px solid #efefef;
-      padding-top: 24px;
+      padding-top: 28px;
     }
 
     a {
@@ -69,6 +74,12 @@
       text-decoration: none;
       border-bottom: 1px solid #e6e6e6;
       padding-bottom: 2px;
+    }
+
+    @media (max-width: 420px) {
+      body { font-size: 17px; }
+      h1 { font-size: 44px; }
+      h2 { font-size: 20px; }
     }
   </style>
 </head>
@@ -112,8 +123,8 @@
       <h2>What It Does</h2>
 
       <p>
-        Clear is built around simple questions people have about their spending, and focuses on giving
-        clear answers to the ones that matter for them.
+        Clear is built around simple questions people have about their spending,
+        and focuses on giving clear answers to the ones that matter for them.
       </p>
 
       <p>No spreadsheets, charts or tools.</p>
@@ -134,16 +145,18 @@
       <h2>How Clear Works</h2>
 
       <p>
-        You share your spending by scanning or uploading any receipt or invoice at any time.
+        Step 1 — You share your spending by scanning or uploading any receipt or invoice at any time.
         The more you share, the better Clear understands your habits and patterns.
+        No manual input or categorising is required.
       </p>
 
       <p>
-        You ask Clear a question in plain language, either in writing or by voice.
+        Step 2 — You ask Clear a question in plain language, either in writing or by voice.
+        There is no need to navigate menus, dashboards, or spreadsheets.
       </p>
 
       <p>
-        Clear gives you a simple answer immediately, either written or spoken.
+        Step 3 — Clear gives you a simple answer immediately, either written or spoken.
         Over time, it requires less of your attention.
       </p>
     </section>
