@@ -8,210 +8,157 @@
   <style>
     :root { color-scheme: light; }
 
-    /* Light, calm typography */
-    body{
-      margin:0;
-      background:#fff;
-      color:#1f1f1f;
-      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
-      font-size:18px;
-      line-height:1.85;
-      letter-spacing:0.01em;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      text-rendering:optimizeLegibility;
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: #fff;
+      color: #222;
+      line-height: 1.7;
     }
 
-    .wrap{
+    .wrap {
       max-width: 720px;
       margin: 0 auto;
       padding: 64px 22px 80px;
     }
 
-    /* Title area */
-    header{
-      margin-bottom: 40px;
-    }
-    h1{
-      margin: 0;
-      font-size: clamp(40px, 6vw, 54px);
-      line-height: 1.1;
+    h1 {
+      margin: 0 0 32px;
+      font-size: 42px;
       font-weight: 600;
       letter-spacing: -0.02em;
     }
 
-    /* Sections */
-    section{
-      padding: 28px 0;
-    }
-
-    /* Very subtle dividers (still “no colors”, just light gray) */
-    section + section{
-      border-top: 1px solid #efefef;
-    }
-
-    /* Headings: smaller, softer, airy */
-    h2{
-      margin: 0 0 14px;
-      font-size: 14px;
+    h2 {
+      margin: 48px 0 14px;
+      font-size: 16px;
       font-weight: 600;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color:#2a2a2a;
+      color: #333;
     }
 
-    p{ margin: 0 0 14px; }
-    p:last-child{ margin-bottom: 0; }
-
-    /* Mission statement highlight: gentle emphasis */
-    .lead{
-      margin-top: 4px;
-      font-weight: 500; /* not too bold */
+    p {
+      margin: 0 0 16px;
     }
 
-    /* Lists: simple and light */
-    ul{
-      margin: 10px 0 0;
+    ul {
+      margin: 8px 0 16px;
       padding-left: 18px;
     }
-    li{
-      margin: 8px 0;
+
+    li {
+      margin: 6px 0;
     }
 
-    /* Line-broken “short” statements */
-    .lines p{
-      margin-bottom: 0;
-    }
-
-    /* Contact */
-    a{
+    a {
       color: inherit;
       text-decoration: none;
-      border-bottom: 1px solid #e6e6e6;
-      padding-bottom: 2px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 1px;
     }
-    a:active{ opacity: 0.75; }
 
-    footer{
-      margin-top: 34px;
-      padding-top: 22px;
-      border-top: 1px solid #efefef;
+    footer {
+      margin-top: 64px;
       font-size: 14px;
-      color:#5a5a5a;
-    }
-
-    /* Make mobile feel even calmer */
-    @media (max-width: 420px){
-      body{ font-size: 17px; }
-      .wrap{ padding: 54px 18px 70px; }
-      section{ padding: 24px 0; }
+      color: #666;
     }
   </style>
 </head>
 
 <body>
   <main class="wrap">
-    <header>
-      <h1>Clear</h1>
-    </header>
+    <h1>Clear</h1>
 
-    <section>
-      <h2>Our Mission</h2>
+    <h2>Our Mission</h2>
 
-      <p class="lead"><strong>Helping you feel at ease about your finances, so you can focus on living the life you want.</strong></p>
+    <p><strong>Helping you feel at ease about your finances, so you can focus on living the life you want.</strong></p>
 
-      <p>
-        Life is not about earning or saving as much as possible.<br/>
-        It’s about finding the right balance — where money supports the life you want to live, instead of shaping it unconsciously.
-      </p>
+    <p>
+      Life is not about earning or saving as much as possible.<br/>
+      It’s about finding the right balance — where money supports the life you want to live, instead of shaping it unconsciously.
+    </p>
 
-      <p>
-        For many people, money is a concern.<br/>
-        Not dramatic.<br/>
-        Not urgent.<br/>
-        Just often there.
-      </p>
+    <p>
+      For many people, money is a concern.<br/>
+      Not dramatic.<br/>
+      Not urgent.<br/>
+      Just often there.
+    </p>
 
-      <p><strong>Clear exists to remove that quiet mental pressure.</strong></p>
+    <p><strong>Clear exists to remove that quiet mental pressure.</strong></p>
 
-      <p>
-        We believe that money is a tool.<br/>
-        Not a task.<br/>
-        Not an identity.
-      </p>
+    <p>
+      We believe that money is a tool.<br/>
+      Not a task.<br/>
+      Not an identity.
+    </p>
 
-      <p><strong>The less time you spend on it, the better.</strong></p>
-    </section>
+    <p><strong>The less time you spend on it, the better.</strong></p>
 
-    <section>
-      <h2>What It Does</h2>
+    <h2>What It Does</h2>
 
-      <p>
-        Clear is built around <strong>simple, real questions</strong> people have about their spending — but don’t have clear answers to.
-      </p>
+    <p>
+      Clear is built around <strong>simple, real questions</strong> people have about their spending — but don’t have clear answers to.
+    </p>
 
-      <p>For example:</p>
-      <ul>
-        <li><strong>How much of my money actually goes to food?</strong></li>
-        <li><strong>Where can I buy the same products, but cheaper?</strong></li>
-        <li><strong>What is the real cost of owning my house?</strong></li>
-        <li><strong>How much do small, everyday purchases really add up to over a month?</strong></li>
-        <li><strong>How much can I save per month if I stop going to restaurants?</strong></li>
-      </ul>
+    <p>For example:</p>
 
-      <p style="margin-top:14px;">
-        Clear doesn’t overwhelm you with data, spreadsheets, or charts.<br/>
-        It gives <strong>clear answers</strong> to the questions that matter to you.
-      </p>
+    <ul>
+      <li><strong>How much of my money actually goes to food?</strong></li>
+      <li><strong>Where can I buy the same products, but cheaper?</strong></li>
+      <li><strong>What is the real cost of owning my house?</strong></li>
+      <li><strong>How much do small, everyday purchases really add up to over a month?</strong></li>
+      <li><strong>How much can I save per month if I stop going to restaurants?</strong></li>
+    </ul>
 
-      <p><strong>One simple question. One simple answer.</strong></p>
-    </section>
+    <p>
+      Clear doesn’t overwhelm you with data, spreadsheets, or charts.<br/>
+      It gives <strong>clear answers</strong> to the questions that matter to you.
+    </p>
 
-    <section>
-      <h2>Who is it for</h2>
+    <p><strong>One simple question. One simple answer.</strong></p>
 
-      <p>Clear is for people who:</p>
-      <ul>
-        <li>are tired of spreadsheets, categories, and manual tracking</li>
-        <li>don’t want budgeting or discipline systems</li>
-        <li>want clarity without losing time getting it</li>
-        <li>want money to feel <strong>handled</strong>, not constantly present</li>
-      </ul>
-    </section>
+    <h2>Who is it for</h2>
 
-    <section>
-      <h2>How Clear Works</h2>
+    <p>Clear is for people who:</p>
 
-      <p><strong>1. Share your spending</strong><br/>
-        Scan or upload any receipt or invoice, anytime.<br/>
-        The more you scan, the more Clear understands your habits and patterns.
-      </p>
-      <p class="lines">
-        No manual input.<br/>
-        No categorising.
-      </p>
+    <ul>
+      <li>are tired of spreadsheets, categories, and manual tracking</li>
+      <li>don’t want budgeting or discipline systems</li>
+      <li>want clarity without losing time getting it</li>
+      <li>want money to feel <strong>handled</strong>, not constantly present</li>
+    </ul>
 
-      <p style="margin-top:18px;"><strong>2. Ask Clear a question</strong><br/>
-        You can interact by:
-      </p>
-      <ul>
-        <li>asking a simple question in plain language</li>
-        <li>written or by voice</li>
-      </ul>
+    <h2>How Clear Works</h2>
 
-      <p style="margin-top:18px;"><strong>3. Get a simple answer</strong><br/>
-        By voice<br/>
-        Written<br/>
-        Immediately
-      </p>
+    <p><strong>1. Share your spending</strong><br/>
+      Scan or upload any receipt or invoice, anytime.<br/>
+      The more you scan, the more Clear understands your habits and patterns.
+    </p>
 
-      <p>Over time, Clear becomes more personal — and requires less attention.</p>
-    </section>
+    <p>No manual input.<br/>No categorising.</p>
 
-    <section>
-      <h2>Contact</h2>
-      <p><a href="mailto:nicolas@wisligo.com">nicolas@wisligo.com</a></p>
-    </section>
+    <p><strong>2. Ask Clear a question</strong><br/>
+      You can interact by:
+    </p>
+
+    <ul>
+      <li>asking a simple question in plain language</li>
+      <li>written or by voice</li>
+    </ul>
+
+    <p><strong>3. Get a simple answer</strong><br/>
+      By voice<br/>
+      Written<br/>
+      Immediately
+    </p>
+
+    <p>Over time, Clear becomes more personal — and requires less attention.</p>
+
+    <h2>Contact</h2>
+
+    <p><a href="mailto:nicolas@wisligo.com">nicolas@wisligo.com</a></p>
 
     <footer>© Clear — a project by WISLIGO</footer>
   </main>
