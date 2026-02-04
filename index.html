@@ -116,6 +116,24 @@
 
     .step-label:first-of-type { margin-top: 0; }
 
+    /* feedback button */
+    .button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 14px 18px;
+      border: 1px solid #efefef;
+      border-radius: 16px;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+
+    .small {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
     @media (max-width: 420px) {
       body { font-size: 17px; }
       h1 { font-size: 44px; }
@@ -219,7 +237,26 @@
 
     <section>
       <h2>Feedback</h2>
-      <p><a href="feedback.html">Help us improve — send feedback</a></p>
+
+      <p>
+        If you have one thing you would want help with, what would it be?<br>
+        A short voice note is perfect.
+      </p>
+
+      <p>
+        You can share what feels unclear, what takes time, what you wish you could ask,
+        or what would help you feel more at ease about your finances.
+      </p>
+
+      <p>
+        <a class="button" id="waEn" href="#" target="_blank" rel="noopener">
+          Send a voice note on WhatsApp
+        </a>
+      </p>
+
+      <p class="small">
+        Tip: once WhatsApp opens, press and hold the microphone button to record your voice note.
+      </p>
     </section>
 
   </div>
@@ -307,7 +344,26 @@
 
     <section>
       <h2>Feedback</h2>
-      <p><a href="feedback.html">Help ons verbeteren — geef feedback</a></p>
+
+      <p>
+        Als er één ding is waar je hulp bij zou willen, wat zou dat zijn?<br>
+        Een korte voice note is perfect.
+      </p>
+
+      <p>
+        Je kan delen wat onduidelijk voelt, wat tijd kost, welke vraag je graag zou kunnen stellen,
+        of wat je zou helpen je meer op je gemak te voelen over je financiën.
+      </p>
+
+      <p>
+        <a class="button" id="waNl" href="#" target="_blank" rel="noopener">
+          Stuur een voice note via WhatsApp
+        </a>
+      </p>
+
+      <p class="small">
+        Tip: zodra WhatsApp opent, houd de microfoonknop ingedrukt om je voice note op te nemen.
+      </p>
     </section>
 
   </div>
@@ -318,6 +374,22 @@
 </main>
 
 <script>
+  // Set WhatsApp number once (country code + number, no +, no spaces)
+  const WHATSAPP_NUMBER = "32478412240";
+
+  // Prefilled texts (EN/NL)
+  const enText = "Voice feedback for Clear: (I’ll send a voice note next)";
+  const nlText = "Voice feedback voor Clear: (Ik stuur hierna een voice note)";
+
+  // Build links
+  const waEnLink = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(enText);
+  const waNlLink = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(nlText);
+
+  // Attach links
+  document.getElementById("waEn").href = waEnLink;
+  document.getElementById("waNl").href = waNlLink;
+
+  // Language toggle
   const enBtn = document.getElementById('enBtn');
   const nlBtn = document.getElementById('nlBtn');
   const en = document.getElementById('en');
