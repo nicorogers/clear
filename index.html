@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,7 +82,6 @@
     .lang { display: none; }
     .lang.active { display: block; }
 
-    /* example cards */
     .example-wrapper { margin-top: 28px; }
 
     .example-scroll {
@@ -114,9 +113,6 @@
       margin: 36px 0 14px;
     }
 
-    .step-label:first-of-type { margin-top: 0; }
-
-    /* feedback button */
     .button {
       display: inline-block;
       margin-top: 10px;
@@ -139,15 +135,15 @@
 <body>
 
 <div class="lang-switch">
-  <span id="enBtn" class="active">EN</span> ·
-  <span id="nlBtn">NL</span>
+  <span id="enBtn">EN</span> ·
+  <span id="nlBtn" class="active">NL</span>
 </div>
 
 <main class="wrap">
   <h1>Clear</h1>
 
   <!-- ENGLISH -->
-  <div class="lang active" id="en">
+  <div class="lang" id="en">
 
     <section>
       <h2>Our Mission</h2>
@@ -255,7 +251,7 @@
   </div>
 
   <!-- DUTCH -->
-  <div class="lang" id="nl">
+  <div class="lang active" id="nl">
 
     <section>
       <h2>Onze missie</h2>
@@ -367,14 +363,10 @@
 </main>
 
 <script>
-  // WhatsApp number (defined once)
   const WHATSAPP_NUMBER = "32478412240";
-
-  // Build links WITHOUT prefilled text
   document.getElementById("waEn").href = "https://wa.me/" + WHATSAPP_NUMBER;
   document.getElementById("waNl").href = "https://wa.me/" + WHATSAPP_NUMBER;
 
-  // Language toggle
   const enBtn = document.getElementById('enBtn');
   const nlBtn = document.getElementById('nlBtn');
   const en = document.getElementById('en');
