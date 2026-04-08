@@ -326,9 +326,11 @@ async function submitWaitlist() {
         'xc-token': NOCODB_TOKEN
       },
       body: JSON.stringify({
-        'First name': firstName,
-        'Last name': lastName,
-        'Email': email
+        fields: {
+          'First name': firstName,
+          'Last name': lastName,
+          'Email': email
+        }
       })
     });
 
