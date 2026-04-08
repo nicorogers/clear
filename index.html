@@ -1,393 +1,356 @@
-<!doctype html>
-<html lang="nl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Clear</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clear — Less attention on money. More space for life.</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <style>
-    body {
-      margin: 0;
-      background: #ffffff;
-      color: #1f1f1f;
-      font-family: ui-serif, Georgia, "Times New Roman", serif;
-      font-size: 18px;
-      line-height: 1.9;
-      text-align: center;
-      letter-spacing: 0.01em;
-      -webkit-font-smoothing: antialiased;
-    }
+  :root {
+    --cream: #F7F4EF;
+    --ink: #1A1A18;
+    --ink-muted: #6B6B63;
+    --ink-faint: #AEADA6;
+    --accent: #2D5A3D;
+    --accent-light: #EAF1EC;
+    --border: rgba(26,26,24,0.10);
+    --max: 680px;
+  }
 
-    .wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 72px 22px 96px;
-    }
+  html { background: var(--cream); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; scroll-behavior: smooth; }
 
-    h1 {
-      font-size: 56px;
-      margin-bottom: 72px;
-      letter-spacing: -0.02em;
-    }
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brand { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); letter-spacing: -0.01em; }
+  .lang-selector { display: flex; gap: 4px; }
+  .lang-btn {
+    padding: 5px 12px; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500;
+    border: 1px solid var(--border); border-radius: 100px;
+    background: transparent; color: var(--ink-muted); cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .lang-btn:hover { color: var(--ink); border-color: rgba(26,26,24,0.3); }
+  .lang-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 
-    h2 {
-      font-size: 24px;
-      margin-bottom: 32px;
-      font-weight: 500;
-    }
+  section { max-width: var(--max); margin: 0 auto; padding: 88px 32px; }
+  section + section { border-top: 1px solid var(--border); }
 
-    section {
-      padding: 56px 0;
-    }
+  .label {
+    display: inline-block;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-light);
+    padding: 4px 10px; border-radius: 100px; margin-bottom: 28px;
+  }
 
-    p {
-      margin: 0 0 22px;
-    }
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.15; letter-spacing: -0.02em;
+    color: var(--ink); margin-bottom: 24px;
+    white-space: pre-line;
+  }
+  .hero-sub { font-size: 18px; font-weight: 300; color: var(--ink-muted); line-height: 1.65; margin-bottom: 40px; max-width: 520px; }
+  .hero-cta {
+    display: inline-block;
+    padding: 13px 28px; font-size: 15px; font-weight: 500; font-family: 'DM Sans', sans-serif;
+    background: var(--accent); color: #fff;
+    border: none; border-radius: 100px; cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .hero-cta:hover { opacity: 0.85; }
 
-    .mission-line {
-      color: #6f8fae;
-    }
+  .body-text { font-size: 16px; font-weight: 300; line-height: 1.8; color: var(--ink-muted); margin-bottom: 18px; }
+  .body-text:last-child { margin-bottom: 0; }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid #e6e6e6;
-      padding-bottom: 2px;
-    }
+  .step { display: flex; gap: 24px; margin-bottom: 40px; }
+  .step:last-child { margin-bottom: 0; }
+  .step-num { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--ink-faint); min-width: 32px; line-height: 1.2; }
+  .step-content h3 { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .step-content p { font-size: 15px; font-weight: 300; line-height: 1.75; color: var(--ink-muted); }
 
-    footer {
-      margin-top: 72px;
-      font-size: 14px;
-      color: #666;
-    }
+  .waitlist-box {
+    background: #fff; border-radius: 16px; padding: 48px;
+    border: 1px solid var(--border);
+  }
+  .waitlist-box .label { background: var(--accent-light); color: var(--accent); }
+  .waitlist-note { font-size: 15px; font-weight: 300; color: var(--ink-muted); margin-bottom: 28px; line-height: 1.65; }
 
-    /* language toggle */
-    .lang-switch {
-      position: absolute;
-      top: 18px;
-      right: 22px;
-      font-size: 14px;
-      color: #666;
-    }
+  .input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .input-grid .full { grid-column: 1 / -1; }
 
-    .lang-switch span {
-      cursor: pointer;
-      margin: 0 4px;
-    }
+  .wl-input {
+    width: 100%;
+    padding: 12px 16px; font-size: 15px; font-family: 'DM Sans', sans-serif;
+    border: 1px solid var(--border); border-radius: 100px;
+    background: var(--cream); color: var(--ink);
+    outline: none; transition: border-color 0.15s;
+  }
+  .wl-input::placeholder { color: var(--ink-faint); }
+  .wl-input:focus { border-color: var(--accent); }
+  .wl-input.error { border-color: #c53030; }
 
-    .lang-switch .active {
-      text-decoration: underline;
-    }
+  .wl-submit {
+    margin-top: 12px;
+    padding: 12px 28px; font-size: 15px; font-weight: 500; font-family: 'DM Sans', sans-serif;
+    background: var(--accent); color: #fff;
+    border: none; border-radius: 100px; cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .wl-submit:hover { opacity: 0.85; }
+  .wl-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    .lang { display: none; }
-    .lang.active { display: block; }
+  .success-msg { display: none; font-size: 15px; color: var(--accent); margin-top: 16px; font-weight: 500; }
+  .error-msg { display: none; font-size: 14px; color: #c53030; margin-top: 12px; }
 
-    .example-wrapper { margin-top: 28px; }
+  footer {
+    max-width: var(--max); margin: 0 auto;
+    padding: 32px 32px 48px;
+    border-top: 1px solid var(--border);
+    font-size: 13px; font-weight: 300; color: var(--ink-faint);
+  }
 
-    .example-scroll {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      padding: 18px 4px 30px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-
-    .example-scroll::-webkit-scrollbar { display: none; }
-
-    .example-card {
-      flex: 0 0 140px;
-      padding: 22px 16px 26px;
-      border: 1px solid #efefef;
-      border-radius: 16px;
-      font-size: 16px;
-      line-height: 1.8;
-      text-align: left;
-      scroll-snap-align: start;
-      background: #fff;
-    }
-
-    .step-label {
-      font-size: 18px;
-      margin: 36px 0 14px;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 14px 18px;
-      border: 1px solid #efefef;
-      border-radius: 16px;
-      text-decoration: none;
-      line-height: 1.2;
-    }
-
-    @media (max-width: 420px) {
-      body { font-size: 17px; }
-      h1 { font-size: 44px; }
-      h2 { font-size: 22px; }
-      .example-card { flex: 0 0 130px; }
-    }
-  </style>
+  @media (max-width: 480px) {
+    nav { padding: 16px 20px; }
+    section { padding: 64px 20px; }
+    .waitlist-box { padding: 32px 24px; }
+    .input-grid { grid-template-columns: 1fr; }
+    .input-grid .full { grid-column: 1; }
+    footer { padding: 28px 20px 40px; }
+  }
+</style>
 </head>
-
 <body>
 
-<div class="lang-switch">
-  <span id="enBtn">EN</span> ·
-  <span id="nlBtn" class="active">NL</span>
-</div>
-
-<main class="wrap">
-  <h1>Clear</h1>
-
-  <!-- ENGLISH -->
-  <div class="lang" id="en">
-
-    <section>
-      <h2>Our Mission</h2>
-
-      <p class="mission-line">
-        Helping you feel at ease about your finances, so you can focus on living the life you want.
-      </p>
-
-      <p>
-        Life is not about earning or saving as much as possible.<br>
-        It’s about finding the right balance — where money is a tool that supports your life,
-        instead of shaping it unconsciously.
-      </p>
-
-      <p>
-        Clear exists to help you find that balance, while spending as little of your time and attention
-        on it as possible.
-      </p>
-    </section>
-
-    <section>
-      <h2>Who is it for</h2>
-
-      <p>Clear is for people who</p>
-
-      <p>
-        · are tired of spreadsheets, categories, and manual tracking<br>
-        · don’t want budgeting or discipline systems<br>
-        · want clarity without losing time getting it<br>
-        · want money to feel handled, not constantly present
-      </p>
-    </section>
-
-    <section>
-      <h2>What It Does</h2>
-
-      <p>
-        Clear is built around simple questions people have about their spending,
-        and focuses on giving clear answers to the ones that matter for them.<br>
-        No spreadsheets, charts or tools.
-      </p>
-
-      <div class="example-wrapper">
-        <div class="example-scroll">
-          <div class="example-card">How much of my money actually goes to food?</div>
-          <div class="example-card">Where can I buy the same products, but cheaper?</div>
-          <div class="example-card">What is the real cost of owning my house?</div>
-          <div class="example-card">How much do small, everyday purchases really add up to over a month?</div>
-          <div class="example-card">How much can I save per month if I stop going to restaurants?</div>
-          <div class="example-card">How many recurring costs per month do I have?</div>
-        </div>
-      </div>
-
-      <p style="margin-top: 26px;">
-        One simple question, one simple answer.
-      </p>
-    </section>
-
-    <section>
-      <h2>How Clear Works</h2>
-
-      <div class="step-label">Step 1</div>
-      <p>
-        Scan your receipt, upload an invoice, or share your spending in whatever way is easiest.
-        Clear reads it automatically — no manual input, no categorising.
-      </p>
-
-      <div class="step-label">Step 2</div>
-      <p>
-        You instantly receive a simple message showing where you could have bought the same thing for less,
-        or what alternative would have saved you money.
-      </p>
-
-      <div class="step-label">Step 3</div>
-      <p>
-        Over time, Clear learns from your spending and quietly helps you make better choices — without asking
-        for more attention.
-      </p>
-    </section>
-
-    <section>
-      <h2>Feedback</h2>
-
-      <p>
-        If you have one thing you would want help with, what would it be?<br>
-        A short voice note is perfect.
-      </p>
-
-      <p>
-        You can share what feels unclear, what takes time, what you wish you could ask,
-        or what would help you feel more at ease about your finances.
-      </p>
-
-      <p>
-        Or, if you feel like it: what would you love to see me do that would make you laugh?
-      </p>
-
-      <p>
-        <a class="button" id="waEn" href="#" target="_blank" rel="noopener">
-          Send a voice note on WhatsApp
-        </a>
-      </p>
-    </section>
-
+<nav>
+  <span class="brand">Clear</span>
+  <div class="lang-selector">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('nl')">NL</button>
   </div>
+</nav>
 
-  <!-- DUTCH -->
-  <div class="lang active" id="nl">
+<section>
+  <p class="label" id="hero-label"></p>
+  <h1 class="hero-title" id="hero-title"></h1>
+  <p class="hero-sub" id="hero-sub"></p>
+  <button class="hero-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})" id="hero-cta"></button>
+</section>
 
-    <section>
-      <h2>Onze missie</h2>
+<section>
+  <p class="label" id="problem-label"></p>
+  <p class="body-text" id="problem-1"></p>
+  <p class="body-text" id="problem-2"></p>
+</section>
 
-      <p class="mission-line">
-        Je helpen je op je gemak te voelen over je financiën, zodat je je kan richten op het leven dat je wil leiden.
-      </p>
+<section>
+  <p class="label" id="offer-label"></p>
+  <p class="body-text" id="offer-1"></p>
+  <p class="body-text" id="offer-2"></p>
+</section>
 
-      <p>
-        Het leven gaat niet over zo veel mogelijk verdienen of sparen.<br>
-        Het gaat over het vinden van de juiste balans — waarin geld een tool is die je leven ondersteunt,
-        in plaats van het onbewust te sturen.
-      </p>
+<section>
+  <p class="label" id="how-label"></p>
+  <p class="body-text" id="how-intro" style="margin-bottom: 40px;"></p>
+  <div class="step"><span class="step-num">1</span><div class="step-content"><h3 id="s1-title"></h3><p id="s1-body"></p></div></div>
+  <div class="step"><span class="step-num">2</span><div class="step-content"><h3 id="s2-title"></h3><p id="s2-body"></p></div></div>
+  <div class="step"><span class="step-num">3</span><div class="step-content"><h3 id="s3-title"></h3><p id="s3-body"></p></div></div>
+  <div class="step"><span class="step-num">4</span><div class="step-content"><h3 id="s4-title"></h3><p id="s4-body"></p></div></div>
+</section>
 
-      <p>
-        Clear bestaat om je te helpen die balans te vinden, met zo weinig mogelijk tijd en aandacht voor geld.
-      </p>
-    </section>
-
-    <section>
-      <h2>Voor wie is het</h2>
-
-      <p>Clear is er voor mensen die</p>
-
-      <p>
-        · klaar zijn met spreadsheets, categorieën en manuele opvolging<br>
-        · geen budget- of disciplinesystemen willen<br>
-        · duidelijkheid willen zonder tijd te verliezen<br>
-        · willen dat geld geregeld voelt, niet voortdurend aanwezig
-      </p>
-    </section>
-
-    <section>
-      <h2>Wat het doet</h2>
-
-      <p>
-        Clear vertrekt vanuit eenvoudige vragen die mensen hebben over hun uitgaven,
-        en geeft heldere antwoorden op wat voor hen belangrijk is.<br>
-        Geen spreadsheets, grafieken of tools.
-      </p>
-
-      <div class="example-wrapper">
-        <div class="example-scroll">
-          <div class="example-card">Hoeveel gaat er eigenlijk naar voeding?</div>
-          <div class="example-card">Waar kan ik hetzelfde goedkoper kopen?</div>
-          <div class="example-card">Wat kost het echt om mijn huis te bezitten?</div>
-          <div class="example-card">Hoeveel tellen kleine uitgaven op per maand?</div>
-          <div class="example-card">Hoeveel bespaar ik als ik minder uit eten ga?</div>
-          <div class="example-card">Hoeveel vaste kosten heb ik per maand?</div>
-        </div>
-      </div>
-
-      <p style="margin-top: 26px;">
-        Eén eenvoudige vraag, één helder antwoord.
-      </p>
-    </section>
-
-    <section>
-      <h2>Hoe Clear werkt</h2>
-
-      <div class="step-label">Stap 1</div>
-      <p>
-        Scan je ticket, upload een factuur, of deel je uitgaven op de manier die het makkelijkst is.
-        Clear leest het automatisch — geen manuele input, geen categorisering.
-      </p>
-
-      <div class="step-label">Stap 2</div>
-      <p>
-        Je krijgt meteen een eenvoudig bericht waar je hetzelfde goedkoper had kunnen kopen,
-        of welk alternatief je geld had bespaard.
-      </p>
-
-      <div class="step-label">Stap 3</div>
-      <p>
-        Na verloop van tijd leert Clear van je uitgaven en helpt het je rustig betere keuzes te maken —
-        zonder extra aandacht te vragen.
-      </p>
-    </section>
-
-    <section>
-      <h2>Feedback</h2>
-
-      <p>
-        Als er één ding is waar je hulp bij zou willen, wat zou dat zijn?<br>
-        Een korte voice note is perfect.
-      </p>
-
-      <p>
-        Je kan delen wat onduidelijk voelt, wat tijd kost, welke vraag je graag zou kunnen stellen,
-        of wat je zou helpen je meer op je gemak te voelen over je financiën.
-      </p>
-
-      <p>
-        Of, als je daar zin in hebt: wat zou je mij graag zien doen dat jou aan het lachen kan brengen?
-      </p>
-
-      <p>
-        <a class="button" id="waNl" href="#" target="_blank" rel="noopener">
-          Stuur een voice note via WhatsApp
-        </a>
-      </p>
-    </section>
-
+<section id="waitlist">
+  <div class="waitlist-box">
+    <p class="label" id="wl-label"></p>
+    <p class="waitlist-note" id="wl-note"></p>
+    <div class="input-grid">
+      <input class="wl-input" type="text" id="first-name" />
+      <input class="wl-input" type="text" id="last-name" />
+      <input class="wl-input full" type="email" id="email-input" />
+    </div>
+    <button class="wl-submit" onclick="submitWaitlist()" id="wl-btn"></button>
+    <p class="success-msg" id="success-msg"></p>
+    <p class="error-msg" id="error-msg"></p>
   </div>
+</section>
 
-  <footer>
-    © Clear — a project by WISLIGO
-  </footer>
-</main>
+<footer id="footer-text"></footer>
 
 <script>
-  const WHATSAPP_NUMBER = "32478412240";
-  document.getElementById("waEn").href = "https://wa.me/" + WHATSAPP_NUMBER;
-  document.getElementById("waNl").href = "https://wa.me/" + WHATSAPP_NUMBER;
+const NOCODB_URL = 'https://app.nocodb.com/api/v3/data/p7mwttwzbenfetn/mnkbf1z4s8tr0s5/records';
+const NOCODB_TOKEN = 'nc_pat_M4QlDGDqkqSVKDm_i-ReBly0dlK28AMBsepsRjM5';
 
-  const enBtn = document.getElementById('enBtn');
-  const nlBtn = document.getElementById('nlBtn');
-  const en = document.getElementById('en');
-  const nl = document.getElementById('nl');
+const copy = {
+  en: {
+    heroLabel: "Financial clarity",
+    heroTitle: "Less attention on money.\nMore space for life.",
+    heroSub: "Join a growing community of people who know their money is working for them — without having to think about it.",
+    heroCta: "Join the waitlist",
+    problemLabel: "The problem",
+    problem1: "Managing your finances feels like a part-time job nobody hired you for. Bank statements, receipts, spreadsheets, categories, budgets — it's exhausting before you even start.",
+    problem2: "And when people do try, they either obsess over every euro or give up entirely. Most people don't lack discipline. They lack a system that works without them.",
+    offerLabel: "What we offer",
+    offer1: "We believe feeling at ease with money is not a destination. It's a process that never truly ends — but one that gets easier and easier. Life changes, priorities shift, but the process stays untouched while it handles these changes. What we build with you is not a solution. It's an environment where that process can thrive.",
+    offer2: "We will introduce you to our process where our tools take you from financial chaos to complete clarity — step by step, at your pace. We start together, with personal guidance, and gradually hand control over to you. Ultimately, you will feel 100% certain that your money is spent the best way possible — without any effort on your part.",
+    howLabel: "How it works",
+    howIntro: "We offer six sessions of one hour each, spread over six months. That is the only time we ask of you.",
+    s1Title: "We listen to your needs",
+    s1Body: "We take time to understand your situation, your needs and what's been holding you back. We connect your accounts, introduce our app, and explain how the process works.",
+    s2Title: "We share what we see",
+    s2Body: "We present our first insights about your spending behaviour and what they reveal about how money moves through your life.",
+    s3Title: "We explain the process",
+    s3Body: "We go through your spending side by side — adjusting, adding or stopping budgets, and fine-tuning until it truly reflects how you want to live.",
+    s4Title: "Continue on your own",
+    s4Body: "We make sure you have everything you need to continue independently. One hour a month, and you'll always know your money is exactly where it should be.",
+    wlLabel: "Join the waitlist",
+    wlNote: "We're currently in an early phase and our capacity is limited. Leave your details and we'll reach out when a spot opens.",
+    wlBtn: "Join waitlist",
+    wlFirstName: "First name",
+    wlLastName: "Last name",
+    wlEmail: "your@email.com",
+    wlSuccess: "You're on the list! We'll be in touch soon.",
+    wlError: "Something went wrong. Please try again.",
+    wlSending: "Sending...",
+    footer: "© Clear — a project by WIS LIGO - Whatever it is, let it go."
+  },
+  nl: {
+    heroLabel: "Financiële helderheid",
+    heroTitle: "Minder aandacht voor geld.\nMeer ruimte voor het leven.",
+    heroSub: "Sluit je aan bij een groeiende gemeenschap van mensen die weten dat hun geld voor hen werkt — zonder er voortdurend aan te denken.",
+    heroCta: "Schrijf je in",
+    problemLabel: "Het probleem",
+    problem1: "Je financiën beheren voelt als een deeltijdjob waar niemand je voor heeft aangenomen. Bankafschriften, bonnetjes, spreadsheets, categorieën, budgetten — het is uitputtend nog voor je begint.",
+    problem2: "En als mensen het toch proberen, obsesseren ze over elke euro of geven ze het volledig op. De meeste mensen missen geen discipline. Ze missen een systeem dat zonder hen werkt.",
+    offerLabel: "Wat we aanbieden",
+    offer1: "Wij geloven dat je goed voelen bij geld nooit een eindpunt is. Het is een proces dat nooit echt stopt — maar wel steeds eenvoudiger wordt. Het leven verandert, prioriteiten verschuiven, en het proces vangt dit op zonder te veranderen. Wat we samen met jou bouwen is geen oplossing. Het is een omgeving waarin dat proces kan gedijen.",
+    offer2: "Wij begeleiden je stap voor stap van financiële chaos naar volledige helderheid — op jouw tempo. We beginnen samen, met persoonlijke begeleiding, en geven de controle geleidelijk aan jou over. Uiteindelijk voldoet het om sporadisch naar je financiën te kijken in een vertrouwde omgeving om te weten dat je je geld op de beste mogelijke manier uitgeeft.",
+    howLabel: "Hoe het werkt",
+    howIntro: "We bieden zes sessies van elk één uur, gespreid over zes maanden. Dat is de enige tijd die we van je vragen.",
+    s1Title: "We luisteren naar jouw behoeften",
+    s1Body: "We nemen de tijd om jouw situatie, behoeften en wat je tegenhoudt te begrijpen. We verbinden je accounts, introduceren onze app en leggen uit hoe het proces werkt.",
+    s2Title: "We delen wat we zien",
+    s2Body: "We presenteren onze eerste inzichten over jouw uitgavengedrag en wat ze onthullen over hoe geld door jouw leven stroomt.",
+    s3Title: "We leggen het proces uit",
+    s3Body: "We doorlopen je uitgaven zij aan zij — budgetten aanpassen, toevoegen of stopzetten, en verfijnen totdat het echt weerspiegelt hoe jij wilt leven.",
+    s4Title: "Zelfstandig verder",
+    s4Body: "We zorgen dat je alles hebt wat je nodig hebt om zelfstandig verder te gaan. Één uur per maand, en je weet altijd dat je geld precies goed uitgegeven wordt.",
+    wlLabel: "Schrijf je in",
+    wlNote: "We bevinden ons momenteel in een vroege fase en onze capaciteit is beperkt. Laat je gegevens achter en we nemen contact op wanneer er een plek vrijkomt.",
+    wlBtn: "Inschrijven",
+    wlFirstName: "Voornaam",
+    wlLastName: "Achternaam",
+    wlEmail: "jouw@email.com",
+    wlSuccess: "Je staat op de lijst! We nemen snel contact op.",
+    wlError: "Er is iets misgegaan. Probeer het opnieuw.",
+    wlSending: "Bezig...",
+    footer: "© Clear — een project van WIS LIGO - Whatever it is, let it go."
+  }
+};
 
-  enBtn.onclick = () => {
-    en.classList.add('active');
-    nl.classList.remove('active');
-    enBtn.classList.add('active');
-    nlBtn.classList.remove('active');
-    document.documentElement.lang = 'en';
-  };
+let currentLang = 'en';
 
-  nlBtn.onclick = () => {
-    nl.classList.add('active');
-    en.classList.remove('active');
-    nlBtn.classList.add('active');
-    enBtn.classList.remove('active');
-    document.documentElement.lang = 'nl';
-  };
+function setLang(lang) {
+  currentLang = lang;
+  const t = copy[lang];
+  document.documentElement.lang = lang;
+  document.getElementById('hero-label').innerText = t.heroLabel;
+  document.getElementById('hero-title').innerText = t.heroTitle;
+  document.getElementById('hero-sub').innerText = t.heroSub;
+  document.getElementById('hero-cta').innerText = t.heroCta;
+  document.getElementById('problem-label').innerText = t.problemLabel;
+  document.getElementById('problem-1').innerText = t.problem1;
+  document.getElementById('problem-2').innerText = t.problem2;
+  document.getElementById('offer-label').innerText = t.offerLabel;
+  document.getElementById('offer-1').innerText = t.offer1;
+  document.getElementById('offer-2').innerText = t.offer2;
+  document.getElementById('how-label').innerText = t.howLabel;
+  document.getElementById('how-intro').innerText = t.howIntro;
+  document.getElementById('s1-title').innerText = t.s1Title;
+  document.getElementById('s1-body').innerText = t.s1Body;
+  document.getElementById('s2-title').innerText = t.s2Title;
+  document.getElementById('s2-body').innerText = t.s2Body;
+  document.getElementById('s3-title').innerText = t.s3Title;
+  document.getElementById('s3-body').innerText = t.s3Body;
+  document.getElementById('s4-title').innerText = t.s4Title;
+  document.getElementById('s4-body').innerText = t.s4Body;
+  document.getElementById('wl-label').innerText = t.wlLabel;
+  document.getElementById('wl-note').innerText = t.wlNote;
+  document.getElementById('wl-btn').innerText = t.wlBtn;
+  document.getElementById('first-name').placeholder = t.wlFirstName;
+  document.getElementById('last-name').placeholder = t.wlLastName;
+  document.getElementById('email-input').placeholder = t.wlEmail;
+  document.getElementById('footer-text').innerText = t.footer;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.getElementById('success-msg').style.display = 'none';
+  document.getElementById('error-msg').style.display = 'none';
+}
+
+async function submitWaitlist() {
+  const t = copy[currentLang];
+  const firstName = document.getElementById('first-name').value.trim();
+  const lastName = document.getElementById('last-name').value.trim();
+  const email = document.getElementById('email-input').value.trim();
+
+  ['first-name', 'last-name', 'email-input'].forEach(id => {
+    document.getElementById(id).classList.remove('error');
+  });
+
+  let valid = true;
+  if (!firstName) { document.getElementById('first-name').classList.add('error'); valid = false; }
+  if (!lastName) { document.getElementById('last-name').classList.add('error'); valid = false; }
+  if (!email || !email.includes('@')) { document.getElementById('email-input').classList.add('error'); valid = false; }
+  if (!valid) return;
+
+  const btn = document.getElementById('wl-btn');
+  btn.disabled = true;
+  btn.innerText = t.wlSending;
+  document.getElementById('success-msg').style.display = 'none';
+  document.getElementById('error-msg').style.display = 'none';
+
+  try {
+    const response = await fetch(NOCODB_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'xc-auth': NOCODB_TOKEN
+      },
+      body: JSON.stringify({
+        'First name': firstName,
+        'Last name': lastName,
+        'Email': email
+      })
+    });
+
+    if (response.ok) {
+      document.getElementById('success-msg').innerText = t.wlSuccess;
+      document.getElementById('success-msg').style.display = 'block';
+      document.getElementById('first-name').value = '';
+      document.getElementById('last-name').value = '';
+      document.getElementById('email-input').value = '';
+    } else {
+      throw new Error('API error');
+    }
+  } catch (e) {
+    document.getElementById('error-msg').innerText = t.wlError;
+    document.getElementById('error-msg').style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.innerText = t.wlBtn;
+  }
+}
+
+setLang('en');
 </script>
-
 </body>
 </html>
