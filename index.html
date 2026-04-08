@@ -339,10 +339,11 @@ async function submitWaitlist() {
       document.getElementById('last-name').value = '';
       document.getElementById('email-input').value = '';
     } else {
-      throw new Error('API error');
+      const errorText = await response.text();
+      throw new Error('Status ' + response.status + ': ' + errorText);
     }
   } catch (e) {
-    document.getElementById('error-msg').innerText = t.wlError;
+    document.getElementById('error-msg').innerText = e.message;
     document.getElementById('error-msg').style.display = 'block';
   } finally {
     btn.disabled = false;
