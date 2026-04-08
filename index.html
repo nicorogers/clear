@@ -323,7 +323,7 @@ async function submitWaitlist() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'xc-auth': NOCODB_TOKEN
+        'xc-token': NOCODB_TOKEN
       },
       body: JSON.stringify({
         'First name': firstName,
